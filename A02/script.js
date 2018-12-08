@@ -2,25 +2,31 @@ let btn = document.querySelector('#highlight-product'),
     modal = document.querySelector('#modal');
 
 
-btn.addEventListener('click' , getColorById);
+btn.addEventListener('click' , getModelById);
 
-function getColorById(){
+function getModelById(){
 
-    let color = modal.firstElementChild.value,
-        ID = modal.lastElementChild.value,
-        productById = document.querySelector(`.phone-list-item[data-product-id='${ID}']`);
-  
+    let fontSize = modal.firstElementChild.value,
+        MODEL = modal.lastElementChild.value,
+        productByModel = document.querySelector(`.phone-list-item[data-brand='${MODEL}']`);
         modal.classList.toggle('hide');
 
-    if((color && color[0] === '#' && color.length === 7) && productById){
+    if((fontSize) && productByModel){
         modal.classList.toggle('hide');
-        productById.style.backgroundColor = color; 
+        productByModel.style.fontSize = (fontSize + "px");
+        productByModel.style.fontWeight = "bold";
     }else{
-        if(color && ID){
-            color = '';
-            ID = '';
+        if(fontSize && MODEL){
+            fontSize = '';
+            MODEL = '';
             alert('ჩანაწერი ვერ მოიძებნა');
           
         }
         
     }
+    
+
+    
+    
+    
+}
