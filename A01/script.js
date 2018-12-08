@@ -1,14 +1,13 @@
-let nums = prompt('Enter 2 number').split(' '),
-    a = +nums[0],
-    b = +nums[1],
-    sum = 0;
+let nums = prompt('Enter 1 number').split(' '),
+a = +nums[0],
+sum = 0;
 
-if((a <= 0 || b <= 0 ) || (a >= 1000 || b >= 1000) || a >= b ){
-    alert('არასწორი შუალედი');
+if((a <= 0) || (a >= 100)){
+alert('არასწორი შუალედი');
 }else{
-    for(a; a<=b; a++){
-        sum += a;
-    }
+for(var i = 0; i<a; i=i+2){
+    sum += i;
+}
 
-    alert(sum);
+alert(sum);
 }
