@@ -50,3 +50,73 @@ let students = [
     }
 
 ];
+
+
+function getStudents(studList){
+    if(Array.isArray(studList)){
+        let _table = document.createElement('table'),
+            _thead = document.createElement('thead'),
+            _tbody = document.createElement('tbody'),
+            _trHead = document.createElement('tr'),
+            _keys = Object.keys(studList[0]);
+
+            /// Head
+            _keys.forEach(key => {
+                let th = document.createElement('th');
+                th.textContent = key;
+                _trHead.appendChild(th);
+            })
+
+        studList.forEach(student => {
+            let keys = Object.keys(student),
+            _trBody = document.createElement('tr');  
+                 
+            keys.forEach(key => {
+                let  td = document.createElement('td'),
+                     grade = student['Grade']
+                
+                 td.textContent = student[key];
+
+                 if(key === 'Grade'){
+                    if(grade >= 91){
+                        td.textContent += ' A';
+                    }else if(grade >= 81 && grade < 91){
+                        td.textContent += ' B';
+                    }else if(grade >= 71 && grade < 81){
+                        td.textContent += ' C';
+                    }else if(grade >= 61 && grade < 71){
+                        td.textContent += ' D';
+                    }else if(grade >= 51 && grade < 61){
+                        td.textContent += ' E';
+                    }else if(grade >= 41 && grade < 51){
+                        td.textContent += ' FX';
+                    }else{
+                        td.textContent += ' F';
+                    }
+                }
+
+                 if(grade <= 51){
+                    _trBody.style.backgroundColor = 'red'; 
+                 }else{
+                     _trBody.style.backgroundColor = 'green';
+                 }
+                 
+
+                _trBody.appendChild(td);        
+            });
+
+
+      
+            // Tbody
+            _tbody.appendChild(_trBody);
+            _table.appendChild(_tbody);
+
+            // Thead
+            _thead.appendChild(_trHead);
+            _table.appendChild(_thead);
+        })
+
+        return document.body.appendChild(_table);
+    }
+}
+getStudents(students);
